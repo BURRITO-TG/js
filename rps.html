@@ -12,59 +12,32 @@
     </h1>
 
     <p>
-        <button onclick="
-            playerChoice = 'rock';
-            const randomNumber = Math.floor(Math.random() * 3);
-            if (randomNumber === 0) {
-                computerChoice = 'rock';
-                outcome = 'It\'s a tie!';
-            } else if (randomNumber === 1) {
-                computerChoice = 'paper';
-                outcome = 'You lose!';
-            } else {
-                computerChoice = 'scissors';
-                outcome = 'You win!';   
-            }
-            alert('You chose ' + playerChoice + ' and the computer chose ' + computerChoice + '. ' + outcome);
-        ">Rock</button>
-
-        <button onclick="
-            playerChoice = 'paper';
-            randomNumber = Math.floor(Math.random() * 3);
-            if (randomNumber === 0) {
-                computerChoice = 'rock';
-                outcome = 'You win!';   
-            } else if (randomNumber === 1) {
-                computerChoice = 'paper';
-                outcome = 'It\'s a tie!';
-            } else {
-                computerChoice = 'scissors';
-                outcome = 'You lose!';
-            }
-            alert('You chose ' + playerChoice + ' and the computer chose ' + computerChoice + '. ' + outcome);
-        ">Paper</button>
-
-        <button onclick="
-            playerChoice = 'scissors';
-            randomNumber = Math.floor(Math.random() * 3);
-            if (randomNumber === 0) {
-                computerChoice = 'rock';
-                outcome = 'You lose!';
-            } else if (randomNumber === 1) {
-                computerChoice = 'paper';
-                outcome = 'You win!';
-            } else {
-                computerChoice = 'scissors';
-                outcome = 'It\'s a tie!';
-            }
-            alert('You chose ' + playerChoice + ' and the computer chose ' + computerChoice + '. ' + outcome);
-        ">Scissors</button>
+        <button onclick="play('rock')">Rock</button>
+        <button onclick="play('paper')">Paper</button>
+        <button onclick="play('scissors')">Scissors</button>
     </p>
 
     <script>
         let playerChoice = '';
         let computerChoice = '';
         let outcome = '';
+        function play(choice) {
+            const randomNumber = Math.floor(Math.random() * 3);
+            const choices = ['rock', 'paper', 'scissors'];
+            computerChoice = choices[randomNumber];
+            if(choice === computerChoice) {
+                outcome = 'It\'s a tie!';
+            } else if (
+                (choice === 'rock' && computerChoice === 'scissors') ||
+                (choice === 'paper' && computerChoice === 'rock') ||
+                (choice === 'scissors' && computerChoice === 'paper')
+            ) {
+                outcome = 'You win!';
+            } else {
+                outcome = 'You lose!';
+            }
+            alert('You chose ' + choice + ' and the computer chose ' + computerChoice + '. ' + outcome);
+        }
     </script>
   </body>
 </html>
