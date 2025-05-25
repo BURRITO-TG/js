@@ -6,11 +6,7 @@
     </title>
 
     <script>
-      const score = {
-        wins: 0,
-        losses: 0,
-        ties: 0
-      }
+      const score =JSON.parse(localStorage.getItem('score'))
 
       let playerChoice = '';
       let computerChoice = '';
@@ -45,6 +41,8 @@
         score.ties = 0;
         alert('Score has been reset.');
       }
+
+      localStorage.setItem('score', JSON.stringify(score));
     </script>
   </head>
 
