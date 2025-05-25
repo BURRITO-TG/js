@@ -2,42 +2,62 @@
 <html>
   <head>
     <title>
-        Rock Paper Scissors
+      Rock Paper Scissors
     </title>
+
+    <script>
+      const score = {
+        wins: 0,
+        losses: 0,
+        ties: 0
+      }
+
+      let playerChoice = '';
+      let computerChoice = '';
+      let outcome = '';
+      function play(choice) {
+        const randomNumber = Math.floor(Math.random() * 3);
+        const choices = ['rock', 'paper', 'scissors'];
+        computerChoice = choices[randomNumber];
+        if(choice === computerChoice) {
+          outcome = 'It\'s a tie!';
+          score.ties++;
+        } else if (
+          (choice === 'rock' && computerChoice === 'scissors') ||
+          (choice === 'paper' && computerChoice === 'rock') ||
+          (choice === 'scissors' && computerChoice === 'paper')
+        ) {
+          outcome = 'You win!';
+          score.wins++;
+        } else {
+          outcome = 'You lose!';
+          score.losses++;
+        }
+        alert('You chose ' + choice + ' and the computer chose ' + computerChoice + '. ' + outcome+
+              '\nWins: ' + score.wins + 
+              '\nLosses: ' + score.losses + 
+              '\nTies: ' + score.ties);
+      }
+
+      function resetScore() {
+        score.wins = 0;
+        score.losses = 0;
+        score.ties = 0;
+        alert('Score has been reset.');
+      }
+    </script>
   </head>
 
   <body>
     <h1>
-        Rock Paper Scissors
+      Rock Paper Scissors
     </h1>
 
     <p>
-        <button onclick="play('rock')">Rock</button>
-        <button onclick="play('paper')">Paper</button>
-        <button onclick="play('scissors')">Scissors</button>
+      <button onclick="play('rock')">Rock</button>
+      <button onclick="play('paper')">Paper</button>
+      <button onclick="play('scissors')">Scissors</button>
+      <button onclick="resetScore()">Reset Score</button>
     </p>
-
-    <script>
-        let playerChoice = '';
-        let computerChoice = '';
-        let outcome = '';
-        function play(choice) {
-            const randomNumber = Math.floor(Math.random() * 3);
-            const choices = ['rock', 'paper', 'scissors'];
-            computerChoice = choices[randomNumber];
-            if(choice === computerChoice) {
-                outcome = 'It\'s a tie!';
-            } else if (
-                (choice === 'rock' && computerChoice === 'scissors') ||
-                (choice === 'paper' && computerChoice === 'rock') ||
-                (choice === 'scissors' && computerChoice === 'paper')
-            ) {
-                outcome = 'You win!';
-            } else {
-                outcome = 'You lose!';
-            }
-            alert('You chose ' + choice + ' and the computer chose ' + computerChoice + '. ' + outcome);
-        }
-    </script>
   </body>
 </html>
