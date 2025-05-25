@@ -6,8 +6,15 @@
     </title>
 
     <script>
-      const score =JSON.parse(localStorage.getItem('score'))
-
+      let score =JSON.parse(localStorage.getItem('score'))
+      
+      if(score === null) {
+        score= {
+          wins: 0,
+          losses: 0,
+          ties: 0
+        }
+      }
       let playerChoice = '';
       let computerChoice = '';
       let outcome = '';
@@ -29,6 +36,7 @@
           outcome = 'You lose!';
           score.losses++;
         }
+        localStorage.setItem('score', JSON.stringify(score));
         alert('You chose ' + choice + ' and the computer chose ' + computerChoice + '. ' + outcome+
               '\nWins: ' + score.wins + 
               '\nLosses: ' + score.losses + 
@@ -39,10 +47,9 @@
         score.wins = 0;
         score.losses = 0;
         score.ties = 0;
+        localStorage.removeItem('score');
         alert('Score has been reset.');
       }
-
-      localStorage.setItem('score', JSON.stringify(score));
     </script>
   </head>
 
