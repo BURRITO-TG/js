@@ -5,6 +5,75 @@
       Rock Paper Scissors
     </title>
 
+    <style>
+      body {
+        font-family: Arial;
+        background-color: rgb(25,25,25);
+        color: white;
+        text-align: center;
+      }
+
+      /* .heading {
+        text-align: center;
+        font-family: Arial;
+      } */
+
+      .rps-icon {
+        width: 50px;
+        height: 50px;
+      }
+
+      .rps {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background-color: rgb(25,25,25);
+        border-color: white;
+        border-width: 3px;
+        border-style: solid;
+        margin-right: 10px;
+      }
+
+      .rps:hover {
+        background-color: rgb(50,50,50);
+        cursor: pointer;
+      }
+
+      .rps:active {
+        background-color: rgb(75,75,75);
+      }
+
+      .js-result {
+        font-size: 34px;
+        margin-top: 30px;
+        font-weight: bold;
+      }
+
+      .js-move {
+        font-size: 30px;
+        margin-top: 10px;
+      }
+
+      .reset-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: rgb(50,50,50);
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .reset-button:hover {
+        background-color: rgb(75,75,75);
+        cursor: pointer;
+      }
+
+      .reset-button:active {
+        background-color: rgb(100,100,100);
+      }
+    </style>
+
     <script>
       let score =JSON.parse(localStorage.getItem('score')) || {
         wins: 0,
@@ -35,7 +104,12 @@
         }
         localStorage.setItem('score', JSON.stringify(score));
         document.querySelector('.js-result').innerHTML = outcome;
-        document.querySelector('.js-move').innerHTML = `You ${choice} - ${computerChoice} Computer`;
+        document.querySelector('.js-move')
+          .innerHTML =
+          `You
+          <img class="rps-icon" src="Images/${choice}-emoji.png">
+          <img class="rps-icon" src="Images/${computerChoice}-emoji.png"> 
+          <img class="rps-icon" src="Images/Robot-emoji.png">`;
         document.querySelector('.js-score').innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
       }
 
@@ -52,18 +126,28 @@
   </head>
 
   <body>
-    <h1>
+    <h1 class="heading">
       Rock Paper Scissors
     </h1>
 
     <p>
-      <button onclick="play('rock')">Rock</button>
-      <button onclick="play('paper')">Paper</button>
-      <button onclick="play('scissors')">Scissors</button>
+      <button onclick="play('rock')" class="rps">
+        <img class="rps-icon" src="Images/rock-emoji.png">
+      </button>
+
+      <button onclick="play('paper')" class="rps">
+        <img class="rps-icon" src="Images/paper-emoji.png">
+      </button>
+
+      <button onclick="play('scissors')" class="rps">
+        <img class="rps-icon" src="Images/scissors-emoji.png">
+      </button>
+
       <p class="js-result"></p>
       <p class="js-move"></p>
       <p class="js-score"></p>
-      <button onclick="resetScore()">Reset Score</button>
+
+      <button onclick="resetScore()" class="reset-button">Reset Score</button>
     </p>
   </body>
 </html>
