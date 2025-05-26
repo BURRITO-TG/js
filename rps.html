@@ -4,133 +4,14 @@
     <title>
       Rock Paper Scissors
     </title>
-
-    <style>
-      body {
-        font-family: Arial;
-        background-color: rgb(25,25,25);
-        color: white;
-        text-align: center;
-      }
-
-      /* .heading {
-        text-align: center;
-        font-family: Arial;
-      } */
-
-      .rps-icon {
-        width: 50px;
-        height: 50px;
-      }
-
-      .rps {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        background-color: rgb(25,25,25);
-        border-color: white;
-        border-width: 3px;
-        border-style: solid;
-        margin-right: 10px;
-      }
-
-      .rps:hover {
-        background-color: rgb(50,50,50);
-        cursor: pointer;
-      }
-
-      .rps:active {
-        background-color: rgb(75,75,75);
-      }
-
-      .js-result {
-        font-size: 34px;
-        margin-top: 30px;
-        font-weight: bold;
-      }
-
-      .js-move {
-        font-size: 30px;
-        margin-top: 10px;
-      }
-
-      .reset-button {
-        margin-top: 20px;
-        padding: 10px 20px;
-        font-size: 18px;
-        background-color: rgb(50,50,50);
-        color: white;
-        border: none;
-        border-radius: 5px;
-      }
-
-      .reset-button:hover {
-        background-color: rgb(75,75,75);
-        cursor: pointer;
-      }
-
-      .reset-button:active {
-        background-color: rgb(100,100,100);
-      }
-    </style>
-
-    <script>
-      let score =JSON.parse(localStorage.getItem('score')) || {
-        wins: 0,
-        losses: 0,
-        ties: 0
-      }
-      
-      let playerChoice = '';
-      let computerChoice = '';
-      let outcome = '';
-      function play(choice) {
-        const randomNumber = Math.floor(Math.random() * 3);
-        const choices = ['rock', 'paper', 'scissors'];
-        computerChoice = choices[randomNumber];
-        if(choice === computerChoice) {
-          outcome = 'It\'s a tie!';
-          score.ties++;
-        } else if (
-          (choice === 'rock' && computerChoice === 'scissors') ||
-          (choice === 'paper' && computerChoice === 'rock') ||
-          (choice === 'scissors' && computerChoice === 'paper')
-        ) {
-          outcome = 'You win!';
-          score.wins++;
-        } else {
-          outcome = 'You lose!';
-          score.losses++;
-        }
-        localStorage.setItem('score', JSON.stringify(score));
-        document.querySelector('.js-result').innerHTML = outcome;
-        document.querySelector('.js-move')
-          .innerHTML =
-          `You
-          <img class="rps-icon" src="Images/${choice}-emoji.png">
-          <img class="rps-icon" src="Images/${computerChoice}-emoji.png"> 
-          <img class="rps-icon" src="Images/Robot-emoji.png">`;
-        document.querySelector('.js-score').innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
-      }
-
-      function resetScore() {
-        score.wins = 0;
-        score.losses = 0;
-        score.ties = 0;
-        localStorage.removeItem('score');
-        document.querySelector('.js-result').innerHTML = '';
-        document.querySelector('.js-move').innerHTML = '';
-        document.querySelector('.js-score').innerHTML = '';
-      }
-    </script>
+    <link rel="stylesheet" href="Styles/rps.css">
+    <script src="Scripts/rps.js"></script>
   </head>
 
   <body>
-    <h1 class="heading">
-      Rock Paper Scissors
-    </h1>
+    <h1>Rock Paper Scissors</h1>
 
-    <p>
+    <div class="game-container">
       <button onclick="play('rock')" class="rps">
         <img class="rps-icon" src="Images/rock-emoji.png">
       </button>
@@ -148,6 +29,6 @@
       <p class="js-score"></p>
 
       <button onclick="resetScore()" class="reset-button">Reset Score</button>
-    </p>
+    </div>
   </body>
 </html>

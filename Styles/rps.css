@@ -1,0 +1,90 @@
+body {
+  font-family: Arial;
+  background-color: rgb(25,25,25);
+  color: white;
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 48px;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.rps-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.rps {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: rgb(25,25,25);
+  border-color: white;
+  border-width: 3px;
+  border-style: solid;
+  margin-right: 10px;
+  transition: transform 0.15s;
+}
+
+.rps:hover {
+  background-color: rgb(50,50,50);
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.rps:active {
+  background-color: rgb(75,75,75);
+  transform: scale(0.9);
+}
+
+.js-result {
+  font-size: 34px;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+.js-move {
+  font-size: 30px;
+  margin-top: 10px;
+}
+
+.reset-button {
+  padding: 10px 15px;
+  background-color: rgb(60, 60, 60);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: transform 0.15s;
+}
+
+.reset-button:hover {
+  transform: scale(1.1);
+  background-color: rgb(80, 80, 80);
+}
+
+.reset-button:active {
+  transform: scale(0.95);
+  background-color: rgb(100, 100, 100);
+}
+
+.game-container {
+  margin: 40px auto;
+  width: 600px;
+  padding: 30px;
+  background-color: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
