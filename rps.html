@@ -12,17 +12,6 @@
         ties: 0
       }
       
-      /*
-      if(score === null) {
-        score= {
-          wins: 0,
-          losses: 0,
-          ties: 0
-        }
-      }
-      */
-
-      
       let playerChoice = '';
       let computerChoice = '';
       let outcome = '';
@@ -45,10 +34,9 @@
           score.losses++;
         }
         localStorage.setItem('score', JSON.stringify(score));
-        alert('You chose ' + choice + ' and the computer chose ' + computerChoice + '. ' + outcome+
-              '\nWins: ' + score.wins + 
-              '\nLosses: ' + score.losses + 
-              '\nTies: ' + score.ties);
+        document.querySelector('.js-result').innerHTML = outcome;
+        document.querySelector('.js-move').innerHTML = `You ${choice} - ${computerChoice} Computer`;
+        document.querySelector('.js-score').innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
       }
 
       function resetScore() {
@@ -56,7 +44,9 @@
         score.losses = 0;
         score.ties = 0;
         localStorage.removeItem('score');
-        alert('Score has been reset.');
+        document.querySelector('.js-result').innerHTML = '';
+        document.querySelector('.js-move').innerHTML = '';
+        document.querySelector('.js-score').innerHTML = '';
       }
     </script>
   </head>
@@ -70,6 +60,9 @@
       <button onclick="play('rock')">Rock</button>
       <button onclick="play('paper')">Paper</button>
       <button onclick="play('scissors')">Scissors</button>
+      <p class="js-result"></p>
+      <p class="js-move"></p>
+      <p class="js-score"></p>
       <button onclick="resetScore()">Reset Score</button>
     </p>
   </body>
